@@ -4,7 +4,7 @@ import commentReducer from './comment/slice';
 import { watchComments } from './comment/saga';
 
 export const rootReducer = {
-  comments: commentReducer,
+  comment: commentReducer,
 };
 
 export function* rootSaga() {
