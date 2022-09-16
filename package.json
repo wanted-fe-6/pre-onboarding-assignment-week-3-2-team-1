@@ -22,8 +22,8 @@
     "eject": "react-scripts eject",
     "api": "npx json-server ./data.json --port 4000",
     "postinstall": "husky install",
-		"format": "prettier --cache --write .",
-		"lint": "eslint --cache ."
+    "format": "prettier --cache --write .",
+    "lint": "eslint --cache ."
   },
   "eslintConfig": {
     "extends": [
