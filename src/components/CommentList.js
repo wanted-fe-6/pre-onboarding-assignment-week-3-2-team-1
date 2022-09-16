@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 function CommentList({ comments }) {
+  if (!Array.isArray(comments)) return null;
   return comments.map((comment, key) => (
     <Comment key={key}>
       <img src={comment.profile_url} alt="" />
