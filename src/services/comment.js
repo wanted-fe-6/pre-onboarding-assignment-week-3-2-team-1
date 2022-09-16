@@ -1,4 +1,4 @@
-class Api {
+class CommentApi {
   constructor() {
     this.baseUrl = 'http://localhost:4000/comments';
   }
@@ -25,5 +25,5 @@ class Api {
   async updateAComment() {}
 }
 
-const api = new Api();
-export default api;
+const commentApi = new CommentApi();
+export default commentApi;
