@@ -8,7 +8,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   reducer: {
-    comment: commentReducer,
+    comments: commentReducer,
   },
   devTools: process.env.NODE_ENV !== 'production',
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger, sagaMiddleware),
