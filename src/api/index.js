@@ -11,7 +11,15 @@ class Api {
       throw new Error('Failed to get comments from server');
     }
   }
-  async getAComment() {}
+  async getAComment(id) {
+    try {
+      const res = await fetch(`${this.baseUrl}/${id}`);
+      const aComment = await res.json();
+      return aComment;
+    } catch (err) {
+      throw new Error('Failed to get a comment from server');
+    }
+  }
   async createAComment() {}
   async deleteAComment() {}
   async updateAComment() {}
