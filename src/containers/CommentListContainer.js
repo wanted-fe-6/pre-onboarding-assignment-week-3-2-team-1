@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import CommentList from '../components/CommentList';
 import commentApi from '../services/comment';
 
-import { getComments } from '../redux/comment/slice';
+import { getComments, deleteComments } from '../redux/comment/slice';
 import { movePage } from '../redux/pagination/slice';
 import { getAForm } from '../redux/form/slice';
 
@@ -23,6 +23,7 @@ function CommentListContainer() {
   };
   const createDeleteHandler = id => () => {
     commentApi.deleteAComment(id);
+    dispatch(deleteComments(id));
     dispatch(movePage(1));
   };
 
