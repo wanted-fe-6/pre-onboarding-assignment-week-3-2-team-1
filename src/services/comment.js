@@ -3,6 +3,16 @@ class CommentApi {
     this.baseUrl = 'http://localhost:4000/comments';
     this.limit = 10;
   }
+  async getCommentsAll() {
+    try {
+      const res = await fetch(this.baseUrl);
+      const comments = await res.json();
+      return comments;
+    } catch (err) {
+      console.error(err);
+      throw new Error('Failed to get all comments from server');
+    }
+  }
   async getCommentsByPage({ page }) {
     try {
       const res = await fetch(`${this.baseUrl}?_page=${page}&_limit=${this.limit}`);
@@ -10,7 +20,7 @@ class CommentApi {
       return comments;
     } catch (err) {
       console.error(err);
-      throw new Error('Failed to get comments from server');
+      throw new Error('Failed to get comments by page from server');
     }
   }
   async getAComment(id) {
