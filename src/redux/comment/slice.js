@@ -26,7 +26,7 @@ export const commentSlice = createSlice({
   },
 });
 
-export const { getComments, getCommentsError, getCommentsSuccess, updateComments } =
+export const { getComments, getCommentsError, getCommentsSuccess, updateComments, deleteComments } =
   commentSlice.actions;
 
 export default commentSlice.reducer;
