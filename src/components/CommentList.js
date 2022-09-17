@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
-import Comments from '../api/comments';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadComments } from '../store/reducers/getComments';
 
 function CommentList() {
-  const [comments, setComments] = useState([]);
+  const { comments, pageLength } = useSelector(state => state.getComments);
+
+  console.info(pageLength);
+
+  const dispatch = useDispatch();
 
   const getComments = () => {
-    Comments.getComments().then(res => setComments(res));
+    dispatch(loadComments(1));
   };
 
   useEffect(() => {
