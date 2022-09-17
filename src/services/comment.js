@@ -1,13 +1,15 @@
 class CommentApi {
   constructor() {
     this.baseUrl = 'http://localhost:4000/comments';
+    this.limit = 10;
   }
-  async getComments() {
+  async getComments({ page }) {
     try {
-      const res = await fetch(this.baseUrl);
+      const res = await fetch(`${this.baseUrl}?_page=${page}&_limit=${this.limit}`);
       const comments = await res.json();
       return comments;
     } catch (err) {
+      console.error(err);
       throw new Error('Failed to get comments from server');
     }
   }
