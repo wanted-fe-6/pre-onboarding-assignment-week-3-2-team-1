@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function CommentList({ comments }) {
+function CommentList({ comments, createEditHandler, createDeleteHandler }) {
   if (!Array.isArray(comments)) return null;
   return comments.map((comment, key) => (
     <Comment key={key}>
@@ -14,8 +14,8 @@ function CommentList({ comments }) {
       <Content>{comment.content}</Content>
 
       <Button>
-        <a>수정</a>
-        <a>삭제</a>
+        <a onClick={createEditHandler(comment.id)}>수정</a>
+        <a onClick={createDeleteHandler(comment.id)}>삭제</a>
       </Button>
 
       <hr />
