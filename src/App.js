@@ -3,7 +3,7 @@ import CommentPage from './pages/CommentPage';
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <CommentPage />
     </div>
   );

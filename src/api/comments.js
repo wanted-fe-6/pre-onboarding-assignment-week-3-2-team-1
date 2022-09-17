@@ -1,11 +1,11 @@
 import { apiBase } from './api';
 
 class Comments {
-  getComments(page){
+  getComments(page) {
     return apiBase.get(`/?_page=${page}&_limit=4&_order=desc&_sort=id`);
   }
 
-  deleteComments(id){
+  deleteComments(id) {
     return apiBase.delete(`/${id}`);
   }
 

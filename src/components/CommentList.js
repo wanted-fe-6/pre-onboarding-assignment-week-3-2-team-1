@@ -39,7 +39,7 @@ function CommentList() {
         </Comment>
       ))}
     </>
-  )
+  );
 }
 
 export default CommentList;

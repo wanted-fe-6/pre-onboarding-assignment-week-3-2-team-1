@@ -11,7 +11,7 @@ function CommentPage() {
       <PageList />
       <Form />
     </div>
-  )
+  );
 }
 
 export default CommentPage;

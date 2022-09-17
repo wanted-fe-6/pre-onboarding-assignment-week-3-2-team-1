@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function PageList() { 
+function PageList() {
   // const [pagination, setPagination] = useState(0);
   // const [onPage, setOnPage] = useState(1);
 
@@ -20,14 +20,12 @@ function PageList() {
   // }
 
   pageArr.push(
-    <Page Page key="1">1</Page>
+    <Page Page key="1">
+      1
+    </Page>
   );
 
-  return (
-    <PageListStyle>
-      {pageArr}
-    </PageListStyle>
-  )
+  return <PageListStyle>{pageArr}</PageListStyle>;
 }
 
 export default PageList;
@@ -43,7 +41,7 @@ const Page = styled.button`
   font-size: 1rem;
   line-height: 1.5;
   border: 1px solid lightgray;
-  
+
   ${({ active }) =>
     active &&
     `
