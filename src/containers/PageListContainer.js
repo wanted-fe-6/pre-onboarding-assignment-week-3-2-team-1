@@ -12,8 +12,8 @@ function PageListContainer() {
     dispatch(getTotalPages());
   }, []);
 
-  const createClickHandler = () => page => {
-    dispatch(movePage(page));
+  const createClickHandler = pageNumber => () => {
+    dispatch(movePage(pageNumber));
   };
 
   return <PageList pagination={pagination} createClickHandler={createClickHandler} />;
