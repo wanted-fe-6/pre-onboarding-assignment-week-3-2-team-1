@@ -1,67 +1,60 @@
 {
   "comments": [
     {
-      "id": 16,
-      "profile_url": "https://picsum.photos/id/2/50/50",
-      "author": "abc_2",
-      "content": "막히면 대답은 빨asda리 해주나요",
-      "createdAt": "2022-03-02"
-    },
-    {
-      "id": 17,
-      "profile_url": "https://picsum.photos/id/2/50/50",
-      "author": "abc_2",
-      "content": "막히면 대답은 빨리 해주나요",
-      "createdAt": "2022-03-02"
-    },
-    {
-      "id": 18,
-      "profile_url": "https://picsum.photos/id/2/50/50",
-      "author": "abc_2",
-      "content": "막히면 대답은 빨리 해주나요",
-      "createdAt": "2022-03-02"
-    },
-    {
-      "id": 19,
-      "profile_url": "https://picsum.photos/id/2/50/50",
-      "author": "abc_2",
-      "content": "막히면 대답333s은 빨리 해주나요",
-      "createdAt": "2022-03-02"
-    },
-    {
-      "id": 20,
-      "profile_url": "https://picsum.photos/id/2/50/50",
-      "author": "abc_2",
-      "content": "막히면 대답은 빨리 해주나요",
-      "createdAt": "2022-03-02"
-    },
-    {
-      "id": 21,
       "profile_url": "https://picsum.photos/id/1/50/50",
-      "author": "ff",
-      "content": "aaㄹㄹㄹㄹㄻㄻ",
-      "createdAt": "2022-09-16"
-    },
-    {
-      "profile_url": "https://picsum.photos/id/1/50/50",
-      "author": "ff",
-      "content": "af",
+      "author": "ㅁㄴㅇㄹ",
+      "content": "ㅁㄴㅇㄹ",
       "createdAt": "2022-09-16",
-      "id": 22
-    },
-    {
-      "profile_url": "https://picsum.photos/id/2/50/50",
-      "author": "abc_2",
-      "content": "막히면 대답333s은 빨리 해주나요",
-      "createdAt": "2022-03-02",
-      "id": 23
+      "id": 1
     },
     {
       "profile_url": "https://picsum.photos/id/1/50/50",
-      "author": "31",
-      "content": "24",
+      "author": "11",
+      "content": "321",
       "createdAt": "2022-09-16",
-      "id": 24
+      "id": 3
+    },
+    {
+      "profile_url": "https://picsum.photos/id/1/50/50",
+      "author": "11",
+      "content": "321",
+      "createdAt": "2022-09-16",
+      "id": 4
+    },
+    {
+      "profile_url": "https://picsum.photos/id/1/50/50",
+      "author": "11",
+      "content": "321",
+      "createdAt": "2022-09-16",
+      "id": 5
+    },
+    {
+      "profile_url": "https://picsum.photos/id/1/50/50",
+      "author": "11",
+      "content": "321",
+      "createdAt": "2022-09-16",
+      "id": 6
+    },
+    {
+      "profile_url": "https://picsum.photos/id/1/50/50",
+      "author": "11",
+      "content": "321",
+      "createdAt": "2022-09-16",
+      "id": 7
+    },
+    {
+      "profile_url": "https://picsum.photos/id/1/50/50",
+      "author": "11",
+      "content": "321",
+      "createdAt": "2022-09-16",
+      "id": 8
+    },
+    {
+      "profile_url": "https://picsum.photos/id/1/50/50",
+      "author": "11",
+      "content": "321",
+      "createdAt": "2022-09-16",
+      "id": 9
     }
   ]
 }
