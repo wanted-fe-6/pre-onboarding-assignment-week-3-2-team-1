@@ -2,6 +2,7 @@ class CommentApi {
   constructor() {
     this.baseUrl = 'http://localhost:4000/comments';
     this.limit = 10;
+    this.headers = { ['Content-Type']: 'application/json' };
   }
   async getCommentsAll() {
     try {
@@ -29,10 +30,22 @@ class CommentApi {
       const aComment = await res.json();
       return aComment;
     } catch (err) {
+      console.error(err);
       throw new Error('Failed to get a comment from server');
     }
   }
-  async createAComment() {}
+  async createAComment(form) {
+    try {
+      await fetch(this.baseUrl, {
+        method: 'POST',
+        body: JSON.stringify(form),
+        headers: this.headers,
+      });
+    } catch (err) {
+      console.error(err);
+      throw new Error('Failed to create a comment');
+    }
+  }
   async deleteAComment() {}
   async updateAComment() {}
 }
