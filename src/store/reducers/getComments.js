@@ -23,7 +23,7 @@ export const loadCommentsFail = error => {
 const getComments = (state = [], action) => {
   switch (action.type) {
     case 'GET_COMMENTS_SUCCESS':
-      return { comments: [...action.data], pageLength: action.pageLength };
+      return { comments: [...action.data], pageLength: Number(action.pageLength) };
     case 'GET_COMMENTS_FAIL':
       return [...state, action.error];
     default:

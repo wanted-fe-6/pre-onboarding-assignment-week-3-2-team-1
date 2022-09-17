@@ -1,27 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { loadComments } from '../store/reducers/getComments';
+import { useSelector } from 'react-redux';
 
 function CommentList() {
-  const { comments, pageLength } = useSelector(state => state.getComments);
-
-  console.info(pageLength);
-
-  const dispatch = useDispatch();
-
-  const getComments = () => {
-    dispatch(loadComments(1));
-  };
-
-  useEffect(() => {
-    getComments();
-  }, []);
+  const { comments } = useSelector(state => state.getComments);
 
   return (
     <Comment>
-      {comments.length
+      {comments?.length
         ? comments.map((comment, key) => (
             <div key={key}>
               <img src={comment.profile_url} alt="" />
