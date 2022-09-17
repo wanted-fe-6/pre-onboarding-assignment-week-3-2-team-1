@@ -3,8 +3,7 @@ import { put, takeEvery, call } from 'redux-saga/effects';
 import { getComments, getCommentsSuccess, getCommentsError } from './slice';
 import commentApi from '../../services/comment';
 
-function* fetchComments(action) {
-  const { payload } = action;
+function* fetchComments({ payload }) {
   const { page } = payload;
 
   const that = commentApi;
