@@ -7,7 +7,7 @@ function* fetchTotalPages() {
   const that = commentApi;
   try {
     const comments = yield call([that, commentApi.getCommentsAll]);
-    const totalPages = Math.ceil(comments / 10);
+    const totalPages = Math.ceil(comments.length / 10);
 
     yield put(getTotalPagesSuccess(totalPages));
   } catch (err) {
