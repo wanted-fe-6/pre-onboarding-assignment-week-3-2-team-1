@@ -18,6 +18,11 @@ export const commentSlice = createSlice({
       });
       return { ...state, data: newComments };
     },
+    deleteComments: (state, { payload }) => {
+      const { data } = state;
+      const newComments = data.filter(comment => comment.id !== payload);
+      return { ...state, data: newComments };
+    },
   },
 });
 
