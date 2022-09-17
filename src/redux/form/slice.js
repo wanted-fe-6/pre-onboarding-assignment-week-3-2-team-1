@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { reducerUtils } from '../../util/async.utill';
 
 const initialForm = {
+  id: null,
   profile_url: '',
   author: '',
   content: '',
