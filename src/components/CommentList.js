@@ -1,10 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteComments, loadComments, updatePage } from '../store/reducers/comments';
 
 function CommentList() {
-  const { comments } = useSelector(state => state.getComments);
+  const { comments } = useSelector(state => state.CommentsReducer);
+
+  const dispatch = useDispatch();
+
+  const handleDeleteComment = id => {
+    dispatch(deleteComments(id));
+    dispatch(loadComments(1));
+    dispatch(updatePage(1));
+  };
 
   return (
     <Comment>
@@ -20,8 +29,8 @@ function CommentList() {
               <Content>{comment.content}</Content>
 
               <Button>
-                <a>수정</a>
-                <a>삭제</a>
+                <button>수정</button>
+                <button onClick={() => handleDeleteComment(comment.id)}>삭제</button>
               </Button>
 
               <hr />
@@ -59,7 +68,7 @@ const Content = styled.div`
 const Button = styled.div`
   text-align: right;
   margin: 10px 0;
-  & > a {
+  & > button {
     margin-right: 10px;
     padding: 0.375rem 0.75rem;
     border-radius: 0.25rem;

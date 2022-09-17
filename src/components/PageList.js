@@ -1,34 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { loadComments } from '../store/reducers/getComments';
+import { loadComments, updatePage } from '../store/reducers/comments';
 
 function PageList() {
-  const { pageLength } = useSelector(state => state.getComments);
-  const [curPage, setCurPage] = useState(1);
+  const { pageLength, curPage } = useSelector(state => state.CommentsReducer);
+
+  const pageArray = [];
 
   const dispatch = useDispatch();
 
-  const getComments = () => {
-    dispatch(loadComments(curPage));
-  };
-
-  useEffect(() => {
-    getComments();
-  }, [curPage]);
-
-  let totalPages = 0;
-  let pageArray = [];
-
   const changePage = index => {
-    setCurPage(index);
+    dispatch(updatePage(index));
   };
 
   const addPages = () => {
-    totalPages = Math.ceil(pageLength / 4);
+    const totalPages = Math.ceil(pageLength / 4);
     let tmp = [];
-    console.info(1);
     for (let i = 1; i < totalPages + 1; i++) {
       if (i === curPage) {
         tmp.push(
@@ -50,6 +39,11 @@ function PageList() {
   if (pageLength) {
     addPages();
   }
+
+  useEffect(() => {
+    dispatch(loadComments(curPage));
+    addPages();
+  }, [curPage]);
 
   return <PageListStyle>{pageArray}</PageListStyle>;
 }
