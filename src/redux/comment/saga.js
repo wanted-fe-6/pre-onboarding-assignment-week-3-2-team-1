@@ -10,7 +10,7 @@ function* fetchComments(action) {
   const that = commentApi;
 
   try {
-    const comments = yield call([that, commentApi.getComments], { page });
+    const comments = yield call([that, commentApi.getCommentsByPage], { page });
     yield put(getCommentsSuccess(comments));
   } catch (err) {
     yield put(getCommentsError(err));
