@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { reducerUtils } from '../../util';
+import { reducerUtils } from '../../util/async.utill';
 
 const initialState = reducerUtils.initial();
 
@@ -8,7 +8,7 @@ export const commentSlice = createSlice({
   initialState,
   reducers: {
     getComments: state => reducerUtils.loading(state),
-    getCommentsSuccess: (_, { payload }) => reducerUtils.success({ ...payload }),
+    getCommentsSuccess: (_, { payload }) => reducerUtils.success(payload),
     getCommentsError: (_, { payload }) => reducerUtils.error(payload),
   },
 });
