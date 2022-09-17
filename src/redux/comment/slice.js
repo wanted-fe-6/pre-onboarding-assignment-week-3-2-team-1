@@ -1,13 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {};
+const initialState = {
+  comments: [],
+  isLoading: false,
+  error: null,
+};
 export const commentSlice = createSlice({
   name: 'comment',
   initialState,
   reducers: {
-    sample: () => {},
+    getComments: state => ({
+      ...state,
+      isLoading: true,
+    }),
+    getCommentsSuccess: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
+      comments: payload,
+    }),
+    getCommentsError: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
+      error: payload,
+    }),
   },
 });
 
-export const { sample } = commentSlice.actions;
+export const { getComments, getCommentsError, getCommentsSuccess } = commentSlice.actions;
+
 export default commentSlice.reducer;
