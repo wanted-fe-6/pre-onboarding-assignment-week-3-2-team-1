@@ -15,41 +15,42 @@ import axios from 'axios';
 // ];
 
 // function CommentList() {
-  // return data.map((comment, key) => (
-  //   <Comment key={key}>
-  //     <img src={comment.profile_url} alt="" />
+// return data.map((comment, key) => (
+//   <Comment key={key}>
+//     <img src={comment.profile_url} alt="" />
 
-  //     {comment.author}
+//     {comment.author}
 
-  //     <CreatedAt>{comment.createdAt}</CreatedAt>
+//     <CreatedAt>{comment.createdAt}</CreatedAt>
 
-  //     <Content>{comment.content}</Content>
+//     <Content>{comment.content}</Content>
 
-  //     <Button>
-  //       <a>수정</a>
-  //       <a>삭제</a>
-  //     </Button>
+//     <Button>
+//       <a>수정</a>
+//       <a>삭제</a>
+//     </Button>
 
-  //     <hr />
-  //   </Comment>
-  // ));
+//     <hr />
+//   </Comment>
+// ));
 // }
 
 function CommentList() {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/comments')
-    .then((res) => {
-      // console.log(res.data);
-      setComments(res.data);
-    }).catch(() => {
-      // console.log(error);
-      alert('댓글을 불러오는 데 실패하였습니다.');
-    })
-  }, [])
-  
-  
+    axios
+      .get('http://localhost:4000/comments')
+      .then(res => {
+        // console.log(res.data);
+        setComments(res.data);
+      })
+      .catch(() => {
+        // console.log(error);
+        alert('댓글을 불러오는 데 실패하였습니다.');
+      });
+  }, []);
+
   return comments.map((comment, key) => (
     <Comment key={key}>
       <img src={comment.profile_url} alt="" />
