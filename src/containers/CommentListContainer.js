@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import CommentList from '../components/CommentList';
 import { getComments } from '../redux/comment/slice';
+import { getAForm } from '../redux/form/slice';
 
 function CommentListContainer() {
   const comments = useSelector(store => store.comment.data);
@@ -13,7 +14,11 @@ function CommentListContainer() {
     dispatch(getComments({ page: current }));
   }, [current]);
 
-  return <CommentList comments={comments} />;
+  const createEditHandler = id => () => {
+    dispatch(getAForm(id));
+  };
+
+  return <CommentList comments={comments} createEditHandler={createEditHandler} />;
 }
 
 export default CommentListContainer;
