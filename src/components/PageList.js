@@ -1,15 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function PageList() {
-  const pageArray = [];
+function PageList({ pagination, createClickHandler }) {
+  const { total } = pagination;
 
-  pageArray.push(
-    // 임시로 페이지 하나만 설정했습니다.
-    <Page key="1">1</Page>
-  );
+  const pageArray = Array.from({ length: total }, (_, idx) => idx + 1);
+  const pages = pageArray.map(pageNumber => (
+    <Page key={pageNumber} onClick={createClickHandler(pageNumber)}>
+      {pageNumber}
+    </Page>
+  ));
 
-  return <PageListStyle>{pageArray}</PageListStyle>;
+  return <PageListStyle>{pages}</PageListStyle>;
 }
 export default PageList;
 
