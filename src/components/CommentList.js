@@ -3,72 +3,43 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
-// 임시 데이터 입니다. 코드 작성시 data 부분을 지워주세요
-// const data = [
-//   {
-//     id: 1,
-//     profile_url: 'https://picsum.photos/id/1/50/50',
-//     author: 'abc_1',
-//     content: 'UI 테스트는 어떻게 진행하나요',
-//     createdAt: '2020-05-01',
-//   },
-// ];
-
-// function CommentList() {
-// return data.map((comment, key) => (
-//   <Comment key={key}>
-//     <img src={comment.profile_url} alt="" />
-
-//     {comment.author}
-
-//     <CreatedAt>{comment.createdAt}</CreatedAt>
-
-//     <Content>{comment.content}</Content>
-
-//     <Button>
-//       <a>수정</a>
-//       <a>삭제</a>
-//     </Button>
-
-//     <hr />
-//   </Comment>
-// ));
-// }
-
 function CommentList() {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
     axios
-      .get('http://localhost:4000/comments')
+      .get(`http://localhost:4000/comments?_page=3&_limit=4&_order=desc&_sort=id`)
       .then(res => {
-        // console.log(res.data);
         setComments(res.data);
+        // setPagination(res.data.length);
       })
       .catch(() => {
-        // console.log(error);
         alert('댓글을 불러오는 데 실패하였습니다.');
       });
-  }, []);
+  });
 
-  return comments.map((comment, key) => (
-    <Comment key={key}>
-      <img src={comment.profile_url} alt="" />
+  return (
+    <>
+      {comments.map((comment, key) => (
+        <Comment key={key}>
+          <img src={comment.profile_url} alt="" />
 
-      {comment.author}
+          {comment.author}
 
-      <CreatedAt>{comment.createdAt}</CreatedAt>
+          <CreatedAt>{comment.createdAt}</CreatedAt>
 
-      <Content>{comment.content}</Content>
+          <Content>{comment.content}</Content>
 
-      <Button>
-        <a>수정</a>
-        <a>삭제</a>
-      </Button>
+          <Button>
+            <a>수정</a>
+            <a>삭제</a>
+          </Button>
 
-      <hr />
-    </Comment>
-  ));
+          <hr />
+        </Comment>
+      ))}
+    </>
+  )
 }
 
 export default CommentList;
