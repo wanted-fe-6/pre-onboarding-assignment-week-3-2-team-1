@@ -5,13 +5,13 @@ import CommentList from '../components/CommentList';
 import { getComments } from '../redux/comment/slice';
 
 function CommentListContainer() {
-  const comments = useSelector(state => state.comment.data);
+  const comments = useSelector(store => store.comment.data);
+  const { current } = useSelector(store => store.pagination.data);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    //todo : page를 위해서 redux를 새롭게 짜야할 것 같기도 한데?
-    dispatch(getComments({ page: 1 }));
-  }, []);
+    dispatch(getComments({ page: current }));
+  }, [current]);
 
   return <CommentList comments={comments} />;
 }
