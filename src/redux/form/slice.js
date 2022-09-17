@@ -11,7 +11,7 @@ const formSlice = createSlice({
   name: 'form',
   initialState,
   reducers: {
-    getAForm: () => reducerUtils.loading(),
+    getAForm: state => reducerUtils.loading({ ...state.data }),
     getAFormSuccess: (_, { payload }) => reducerUtils.success(payload),
     getAFormError: (_, { payload }) => reducerUtils.error(payload),
   },
