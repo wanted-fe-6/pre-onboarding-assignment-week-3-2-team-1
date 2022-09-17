@@ -5,7 +5,7 @@ import commentApi from '../../services/comment';
 function* fetchAComment({ payload }) {
   const that = commentApi;
   try {
-    const comment = yield call([that, commentApi.getAComment(payload)]);
+    const comment = yield call([that, commentApi.getAComment], payload);
     yield put(getAFormSuccess(comment));
   } catch (err) {
     yield put(getAFormError(err));
