@@ -50,6 +50,13 @@ export const updatePage = page => {
   };
 };
 
+export const getUpdateForm = form => {
+  return {
+    type: 'GET_UPDATE_FORM',
+    form,
+  };
+};
+
 const CommentsReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'UPDATE_CURRENT_PAGE':
@@ -64,6 +71,9 @@ const CommentsReducer = (state = initialState, action) => {
       return { ...state, comments: state.comments.filter(id => id !== action.id) };
     case 'DELETE_COMMENTS_FAIL':
       return state;
+
+    case 'GET_UPDATE_FORM':
+      return { ...state, form: action.form };
     default:
       return state;
   }

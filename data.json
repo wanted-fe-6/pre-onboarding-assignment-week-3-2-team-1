@@ -36,11 +36,11 @@
       "createdAt": "2022-03-02"
     },
     {
+      "id": 21,
       "profile_url": "https://picsum.photos/id/1/50/50",
       "author": "ff",
-      "content": "aa",
-      "createdAt": "2022-09-16",
-      "id": 21
+      "content": "aaㄹㄹㄹㄹㄻㄻ",
+      "createdAt": "2022-09-16"
     },
     {
       "profile_url": "https://picsum.photos/id/1/50/50",
@@ -48,6 +48,20 @@
       "content": "af",
       "createdAt": "2022-09-16",
       "id": 22
+    },
+    {
+      "profile_url": "https://picsum.photos/id/2/50/50",
+      "author": "abc_2",
+      "content": "막히면 대답333s은 빨리 해주나요",
+      "createdAt": "2022-03-02",
+      "id": 23
+    },
+    {
+      "profile_url": "https://picsum.photos/id/1/50/50",
+      "author": "31",
+      "content": "24",
+      "createdAt": "2022-09-16",
+      "id": 24
     }
   ]
 }

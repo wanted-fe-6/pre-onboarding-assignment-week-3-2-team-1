@@ -18,6 +18,22 @@ class Comments {
     });
     return res;
   }
+
+  async getUpdateComments(id) {
+    const res = await apiBase.get(`/${id}`);
+    return res.data;
+  }
+
+  async updateComments({ id, avatar, author, description, date }) {
+    const res = await apiBase.put(`/${id}`, {
+      id,
+      profile_url: avatar,
+      author,
+      content: description,
+      createdAt: date,
+    });
+    return res;
+  }
 }
 
 export default new Comments();

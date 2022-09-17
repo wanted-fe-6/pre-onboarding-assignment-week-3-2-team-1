@@ -1,8 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Comments from '../api/comments';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteComments, loadComments, updatePage } from '../store/reducers/comments';
+import {
+  deleteComments,
+  loadComments,
+  updatePage,
+  getUpdateForm,
+} from '../store/reducers/comments';
 
 function CommentList() {
   const { comments } = useSelector(state => state.CommentsReducer);
@@ -13,6 +20,12 @@ function CommentList() {
     dispatch(deleteComments(id));
     dispatch(loadComments(1));
     dispatch(updatePage(1));
+  };
+
+  const handleUpdateComment = id => {
+    Comments.getUpdateComments(id).then(res => {
+      dispatch(getUpdateForm(res));
+    });
   };
 
   return (
@@ -29,14 +42,14 @@ function CommentList() {
               <Content>{comment.content}</Content>
 
               <Button>
-                <button>수정</button>
+                <button onClick={() => handleUpdateComment(comment.id)}>수정</button>
                 <button onClick={() => handleDeleteComment(comment.id)}>삭제</button>
               </Button>
 
               <hr />
             </div>
           ))
-        : '없음'}
+        : '댓글이 존재하지 않습니다.'}
     </Comment>
   );
 }

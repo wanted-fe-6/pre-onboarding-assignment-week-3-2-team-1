@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import Comments from '../api/comments';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loadComments, updatePage } from '../store/reducers/comments';
 
 function Form() {
@@ -30,17 +30,48 @@ function Form() {
     setDate(e.target.value);
   };
 
-  const onSubmit = async e => {
-    e.preventDefault();
-    Comments.createComments({ avatar, author, description, date }).then(() => {
-      dispatch(loadComments(1));
-      dispatch(updatePage(1));
+  const initialForm = form => {
+    if (form) {
+      setAvatar(form.profile_url);
+      setAuthor(form.author);
+      setDescription(form.content);
+      setDate(form.createdAt);
+    } else {
       setAvatar('');
       setAuthor('');
       setDescription('');
       setDate('');
-    });
+    }
   };
+
+  const { form, curPage } = useSelector(state => state.CommentsReducer);
+
+  const openUpdateForm = () => {
+    if (form) {
+      initialForm(form);
+    }
+  };
+
+  const onSubmit = async e => {
+    e.preventDefault();
+    if (form) {
+      const id = form.id;
+      Comments.updateComments({ id, avatar, author, description, date }).then(() => {
+        dispatch(loadComments(curPage));
+        initialForm();
+      });
+    } else {
+      Comments.createComments({ avatar, author, description, date }).then(() => {
+        dispatch(loadComments(1));
+        dispatch(updatePage(1));
+        initialForm();
+      });
+    }
+  };
+
+  useEffect(() => {
+    openUpdateForm();
+  }, [form]);
 
   return (
     <FormStyle>
