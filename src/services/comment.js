@@ -46,8 +46,28 @@ class CommentApi {
       throw new Error('Failed to create a comment');
     }
   }
-  async deleteAComment() {}
-  async updateAComment() {}
+  async updateAComment(id, form) {
+    try {
+      await fetch(`${this.baseUrl}/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(form),
+        headers: this.headers,
+      });
+    } catch (err) {
+      console.error(err);
+      throw new Error('Failed to update a comment');
+    }
+  }
+  async deleteAComment(id) {
+    try {
+      await fetch(`${this.baseUrl}/${id}`, {
+        method: 'DELETE',
+      });
+    } catch (err) {
+      console.error(err);
+      throw new Error('Failed to delete a comment');
+    }
+  }
 }
 
 const commentApi = new CommentApi();
