@@ -8,6 +8,16 @@ class Comments {
   deleteComments(id) {
     return apiBase.delete(`/${id}`);
   }
+
+  async createComments({ avatar, author, description, date }) {
+    const res = await apiBase.post(`/`, {
+      profile_url: avatar,
+      author,
+      content: description,
+      createdAt: date,
+    });
+    return res;
+  }
 }
 
 export default new Comments();

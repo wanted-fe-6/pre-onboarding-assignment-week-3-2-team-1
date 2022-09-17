@@ -1,5 +1,92 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+
+import Comments from '../api/comments';
+
+import { useDispatch } from 'react-redux';
+import { loadComments, updatePage } from '../store/reducers/comments';
+
+function Form() {
+  const [avatar, setAvatar] = useState('');
+  const [author, setAuthor] = useState('');
+  const [description, setDescription] = useState('');
+  const [date, setDate] = useState('');
+
+  const dispatch = useDispatch();
+
+  const onChangeAvatar = e => {
+    setAvatar(e.target.value);
+  };
+
+  const onChangeAuthor = e => {
+    setAuthor(e.target.value);
+  };
+
+  const onChangeDesc = e => {
+    setDescription(e.target.value);
+  };
+
+  const onChangeDate = e => {
+    setDate(e.target.value);
+  };
+
+  const onSubmit = async e => {
+    e.preventDefault();
+    Comments.createComments({ avatar, author, description, date }).then(() => {
+      dispatch(loadComments(1));
+      dispatch(updatePage(1));
+      setAvatar('');
+      setAuthor('');
+      setDescription('');
+      setDate('');
+    });
+  };
+
+  return (
+    <FormStyle>
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          name="profile_url"
+          value={avatar}
+          placeholder="https://picsum.photos/id/1/50/50"
+          onChange={onChangeAvatar}
+          required
+        />
+        <br />
+        <input
+          type="text"
+          name="author"
+          value={author}
+          placeholder="작성자"
+          onChange={onChangeAuthor}
+          required
+        />
+        <br />
+        <textarea
+          name="content"
+          value={description}
+          placeholder="내용"
+          onChange={onChangeDesc}
+          required
+        ></textarea>
+        <br />
+        <input
+          type="text"
+          value={date}
+          name="createdAt"
+          placeholder="2020-05-30"
+          onChange={onChangeDate}
+          required
+        />
+        <br />
+        <button type="submit">등록</button>
+      </form>
+    </FormStyle>
+  );
+}
+
+export default Form;
 
 const FormStyle = styled.div`
   & > form {
@@ -23,28 +110,3 @@ const FormStyle = styled.div`
     cursor: pointer;
   }
 `;
-
-function Form() {
-  return (
-    <FormStyle>
-      <form>
-        <input
-          type="text"
-          name="profile_url"
-          placeholder="https://picsum.photos/id/1/50/50"
-          required
-        />
-        <br />
-        <input type="text" name="author" placeholder="작성자" />
-        <br />
-        <textarea name="content" placeholder="내용" required></textarea>
-        <br />
-        <input type="text" name="createdAt" placeholder="2020-05-30" required />
-        <br />
-        <button type="submit">등록</button>
-      </form>
-    </FormStyle>
-  );
-}
-
-export default Form;
