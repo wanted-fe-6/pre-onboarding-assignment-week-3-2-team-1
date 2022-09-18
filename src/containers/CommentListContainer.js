@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import CommentList from '../components/CommentList';
-import commentApi from '../api/comment';
+import Skeleton from '../components/Skeleton';
 
+import commentApi from '../api/comment';
 import { getComments, deleteComments } from '../redux/comment/slice';
 import { movePage } from '../redux/pagination/slice';
 import { getForm } from '../redux/form/slice';
-import Skeleton from '../components/Skeleton';
 
 function CommentListContainer() {
   const { data: comments, loading } = useSelector(store => store.comment);
