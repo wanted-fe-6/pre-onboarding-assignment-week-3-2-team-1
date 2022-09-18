@@ -2,14 +2,15 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import CommentList from '../components/CommentList';
-import commentApi from '../services/comment';
+import Skeleton from '../components/Skeleton';
 
-import { getComments, deleteComments } from '../redux/comment/slice';
+import commentApi from '../api/comment';
+import { getComments, deleteAComment } from '../redux/comment/slice';
 import { movePage } from '../redux/pagination/slice';
-import { getAForm } from '../redux/form/slice';
+import { getForm } from '../redux/form/slice';
 
 function CommentListContainer() {
-  const comments = useSelector(store => store.comment.data);
+  const { data: comments, loading } = useSelector(store => store.comment);
   const pagination = useSelector(store => store.pagination.data);
 
   const dispatch = useDispatch();
@@ -19,14 +20,18 @@ function CommentListContainer() {
   }, [pagination.current]);
 
   const createEditHandler = id => () => {
-    dispatch(getAForm(id));
+    dispatch(getForm(id));
   };
   const createDeleteHandler = id => () => {
+    const agree = confirm('정말 삭제하시겠습니까?');
+    if (!agree) return;
+
     commentApi.deleteAComment(id);
-    dispatch(deleteComments(id));
+    dispatch(deleteAComment(id));
     dispatch(movePage(1));
   };
 
+  if (loading) return <Skeleton />;
   return (
     <CommentList
       comments={comments}

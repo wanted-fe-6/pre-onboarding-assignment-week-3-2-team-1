@@ -13,13 +13,13 @@ const formSlice = createSlice({
   name: 'form',
   initialState,
   reducers: {
-    getAForm: state => reducerUtils.loading({ ...state.data }),
-    getAFormSuccess: (_, { payload }) => reducerUtils.success(payload),
-    getAFormError: (_, { payload }) => reducerUtils.error(payload),
-    setAForm: (state, { payload }) => ({ ...state, data: { ...state.data, ...payload } }),
-    resetAForm: () => reducerUtils.initial(initialForm),
+    getForm: state => reducerUtils.loading({ ...state.data }),
+    getFormSuccess: (_, { payload }) => reducerUtils.success(payload),
+    getFormError: (_, { payload }) => reducerUtils.error(payload),
+    setForm: (state, { payload }) => ({ ...state, data: { ...state.data, ...payload } }),
+    resetForm: () => reducerUtils.initial(initialForm),
   },
 });
 
-export const { getAForm, getAFormError, getAFormSuccess, setAForm, resetAForm } = formSlice.actions;
+export const { getForm, getFormError, getFormSuccess, setForm, resetForm } = formSlice.actions;
 export default formSlice.reducer;

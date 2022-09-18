@@ -1,12 +1,11 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 import { getTotalPages, getTotalPagesError, getTotalPagesSuccess } from './slice';
-import commentApi from '../../services/comment';
+import commentApi from '../../api/comment';
 
 function* fetchTotalPages() {
-  const that = commentApi;
   try {
-    const comments = yield call([that, commentApi.getCommentsAll]);
+    const comments = yield call(commentApi.getCommentsAll);
     const totalPages = Math.ceil(comments.length / 10);
 
     yield put(getTotalPagesSuccess(totalPages));
