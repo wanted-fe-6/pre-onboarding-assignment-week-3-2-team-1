@@ -49,6 +49,14 @@ class apiModel {
       throw new Error({ message: '비동기 연결 실패', errorMessage: e });
     }
   };
+
+  static delComment = async commentId => {
+    try {
+      await axios.delete(`${apiUrl}/comments/${commentId}`);
+    } catch (e) {
+      throw new Error({ message: '비동기 연결 실패', errorMessage: e });
+    }
+  };
 }
 
 export default apiModel;

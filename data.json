@@ -81,7 +81,7 @@
       "id": 12,
       "profile_url": "https://picsum.photos/id/12/50/50",
       "author": "abc_12",
-      "content": "주변에 React 개발자 있나요",
+      "content": "주변에 React 개발자 있나요?",
       "createdAt": "2022-03-12"
     },
     {
@@ -144,7 +144,7 @@
       "id": 21,
       "profile_url": "https://picsum.photos/id/21/50/50",
       "author": "abc_21",
-      "content": "typescript도 배워 보려고 합니다. 어떻게 배우는게 빠를까요",
+      "content": "typescript도 배워 보려고 합니다. 어떻게 배우는게 빠를까요??",
       "createdAt": "2022-03-21"
     },
     {
@@ -155,13 +155,6 @@
       "createdAt": "2022-03-22"
     },
     {
-      "id": 23,
-      "profile_url": "https://picsum.photos/id/1/50/50",
-      "author": "dd",
-      "content": "dd",
-      "createdAt": "2020-09-18"
-    },
-    {
       "id": 24,
       "profile_url": "https://picsum.photos/id/1/50/50",
       "author": "fdsfs",
@@ -169,24 +162,24 @@
       "createdAt": "2020-09-18"
     },
     {
-      "id": 25,
-      "profile_url": "https://picsum.photos/id/21/50/50",
-      "author": "dd",
-      "content": "dd",
-      "createdAt": "2022-09-18"
-    },
-    {
       "id": 26,
       "profile_url": "https://picsum.photos/id/21/50/50",
       "author": "fs",
-      "content": "ㄹㄹㄹfs",
+      "content": "ㄹㄹㄹfs?",
       "createdAt": "2022-09-18"
     },
     {
       "id": 27,
       "profile_url": "https://picsum.photos/id/1/50/50",
       "author": "ㄹㅇㄴ",
-      "content": "ㄹㅇㄴ",
+      "content": "ㄹㅇㄴ?>",
+      "createdAt": "2022-09-18"
+    },
+    {
+      "id": 28,
+      "profile_url": "https://picsum.photos/id/1/50/50",
+      "author": "f",
+      "content": "fdsfds",
       "createdAt": "2022-09-18"
     }
   ]

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { getComment, getComments } from '../modules/comments';
+import { delComment, getComment, getComments } from '../modules/comments';
 
 function CommentList() {
   const { data, loading, error } = useSelector(state => state.comments.commentList);
@@ -13,6 +13,15 @@ function CommentList() {
 
   const handleEditComment = id => {
     dispatch(getComment(id));
+  };
+
+  const handleDelComment = id => {
+    if (confirm('정말로 삭제하시겠습니까?')) {
+      dispatch(delComment(id));
+      dispatch(getComments(1));
+    } else {
+      return;
+    }
   };
 
   if (loading) return <div>로딩중...</div>;
@@ -31,7 +40,7 @@ function CommentList() {
 
       <Button>
         <a onClick={() => handleEditComment(comment.id)}>수정</a>
-        <a>삭제</a>
+        <a onClick={() => handleDelComment(comment.id)}>삭제</a>
       </Button>
 
       <hr />

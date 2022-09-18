@@ -21,15 +21,16 @@ const PUT_COMMENT = 'PUT_COMMENT';
 const PUT_COMMENT_SUCCESS = 'PUT_COMMENT_SUCCESS';
 const PUT_COMMENT_ERROR = 'PUT_COMMENT_ERROR';
 
-// const DEL_COMMENT = 'DEL_COMMENT';
-// const DEL_COMMENT_SUCCESS = 'DEL_COMMENT_SUCCESS';
-// const DEL_COMMENT_ERROR = 'DEL_COMMENT_ERROR';
+const DEL_COMMENT = 'DEL_COMMENT';
+const DEL_COMMENT_SUCCESS = 'DEL_COMMENT_SUCCESS';
+const DEL_COMMENT_ERROR = 'DEL_COMMENT_ERROR';
 
 export const getComments = createThunk(GET_COMMENTS, apiModel.getComments);
 export const getCommentsLength = createThunk(GET_COMMENTS_LENGTH, apiModel.getCommentsLength);
 export const getComment = createThunk(GET_COMMENT, apiModel.getComment);
 export const postComment = createThunk(POST_COMMENT, apiModel.postComment);
 export const putComment = createThunk(PUT_COMMENT, apiModel.putComment);
+export const delComment = createThunk(DEL_COMMENT, apiModel.delComment);
 
 const initState = {
   commentList: reducerUtils.initial(),
@@ -42,6 +43,7 @@ const getCOMMENTSLengthReducer = handleReducer(GET_COMMENTS_LENGTH, 'commentLeng
 const getCOMMENTReducer = handleReducer(GET_COMMENT, 'comment');
 const postCOMMENTReducer = handleReducer(POST_COMMENT, 'comment');
 const putCOMMENTReducer = handleReducer(PUT_COMMENT, 'comment');
+const delCOMMENTReducer = handleReducer(DEL_COMMENT, 'comment');
 
 export default function comments(state = initState, action) {
   switch (action.type) {
@@ -65,6 +67,10 @@ export default function comments(state = initState, action) {
     case PUT_COMMENT_SUCCESS:
     case PUT_COMMENT_ERROR:
       return putCOMMENTReducer(state, action);
+    case DEL_COMMENT:
+    case DEL_COMMENT_SUCCESS:
+    case DEL_COMMENT_ERROR:
+      return delCOMMENTReducer(state, action);
 
     default:
       return state;
