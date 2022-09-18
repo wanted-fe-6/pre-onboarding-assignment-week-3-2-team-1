@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import commentApi from '../services/comment';
+import commentApi from '../api/comment';
 import { updateComments } from '../redux/comment/slice';
 import { movePage } from '../redux/pagination/slice';
-import { setAForm, resetAForm } from '../redux/form/slice';
+import { setForm, resetForm } from '../redux/form/slice';
 
 import Form from '../components/Form';
 
@@ -13,7 +13,7 @@ function FormContainer() {
   const dispatch = useDispatch();
 
   const handleChange = e => {
-    dispatch(setAForm({ [e.target.name]: e.target.value }));
+    dispatch(setForm({ [e.target.name]: e.target.value }));
   };
 
   const handleSumbit = e => {
@@ -26,7 +26,7 @@ function FormContainer() {
       commentApi.updateAComment(form.id, form);
       dispatch(updateComments(form));
     }
-    dispatch(resetAForm());
+    dispatch(resetForm());
   };
 
   return <Form form={form} handleSumbit={handleSumbit} handleChange={handleChange} />;
