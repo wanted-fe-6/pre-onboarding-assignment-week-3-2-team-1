@@ -1,25 +1,25 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getComments } from './modules/comments';
+// import React, { useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { getComments } from './modules/comments';
 
-const Temp = () => {
-  const { data, loading, error } = useSelector(state => state.comments.commentList);
-  const dispatch = useDispatch();
+// const Temp = () => {
+//   const { data, loading, error } = useSelector(state => state.comments.commentList);
+//   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getComments(1));
-  }, [dispatch]);
+//   useEffect(() => {
+//     dispatch(getComments(1));
+//   }, [dispatch]);
 
-  if (loading) return <div>로딩중...</div>;
-  if (error) return <div>에러가 발생했습니다.</div>;
-  if (!data) return null;
+//   if (loading) return <div>로딩중...</div>;
+//   if (error) return <div>에러가 발생했습니다.</div>;
+//   if (!data) return null;
 
-  return (
-    <ul>
-      {data.contents.map(comment => (
-        <li key={comment.id}>{comment.author}</li>
-      ))}
-    </ul>
-  );
-};
-export default Temp;
+//   return (
+//     <ul>
+//       {data.contents.map(comment => (
+//         <li key={comment.id}>{comment.author}</li>
+//       ))}
+//     </ul>
+//   );
+// };
+// export default Temp;

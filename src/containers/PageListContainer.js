@@ -8,7 +8,7 @@ function PageListContainer() {
   const { data, loading, error } = commentLength;
   const pageId = commentList.data?.param;
   const dispatch = useDispatch();
-  console.info(pageId);
+  // console.info(pageId);
 
   useEffect(() => {
     dispatch(getCommentsLength());

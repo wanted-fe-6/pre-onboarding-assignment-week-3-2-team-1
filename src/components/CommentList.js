@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { getComments } from '../modules/comments';
+import { getComment, getComments } from '../modules/comments';
 
 function CommentList() {
   const { data, loading, error } = useSelector(state => state.comments.commentList);
@@ -10,6 +10,10 @@ function CommentList() {
   useEffect(() => {
     dispatch(getComments(1));
   }, [dispatch]);
+
+  const handleEditComment = id => {
+    dispatch(getComment(id));
+  };
 
   if (loading) return <div>로딩중...</div>;
   if (error) return <div>에러가 발생했습니다.</div>;
@@ -26,7 +30,7 @@ function CommentList() {
       <Content>{comment.content}</Content>
 
       <Button>
-        <a>수정</a>
+        <a onClick={() => handleEditComment(comment.id)}>수정</a>
         <a>삭제</a>
       </Button>
 

@@ -9,7 +9,7 @@ class apiModel {
       );
       return data;
     } catch (e) {
-      console.info('비동기 에러');
+      throw new Error({ message: '비동기 연결 실패', errorMessage: e });
     }
   };
 
@@ -18,13 +18,35 @@ class apiModel {
       const { data } = await axios.get(`${apiUrl}/comments`);
       return data.length;
     } catch (e) {
-      console.info('비동기 에러');
+      throw new Error({ message: '비동기 연결 실패', errorMessage: e });
     }
   };
 
-  static getComment = async (endpoint, commentId) => {
-    const { data } = await axios.get(apiUrl + '/' + endpoint + '/' + commentId);
-    return data;
+  static getComment = async commentId => {
+    try {
+      const { data } = await axios.get(`${apiUrl}/comments/${commentId}`);
+      return data;
+    } catch (e) {
+      throw new Error({ message: '비동기 연결 실패', errorMessage: e });
+    }
+  };
+
+  static postComment = async body => {
+    try {
+      const { data } = await axios.post(`${apiUrl}/comments`, { ...body });
+      return data;
+    } catch (e) {
+      throw new Error({ message: '비동기 연결 실패', errorMessage: e });
+    }
+  };
+
+  static putComment = async (id, body) => {
+    try {
+      const { data } = await axios.put(`${apiUrl}/comments/${id}`, { ...body });
+      return data;
+    } catch (e) {
+      throw new Error({ message: '비동기 연결 실패', errorMessage: e });
+    }
   };
 }
 
