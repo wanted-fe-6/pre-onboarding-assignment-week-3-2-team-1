@@ -4,7 +4,8 @@ export const createThunk = (type, apiFunc) => {
   const thunk = param => async dispatch => {
     dispatch({ type, param });
     try {
-      const payload = await apiFunc(param);
+      const contents = await apiFunc(param);
+      const payload = { contents, param };
       dispatch({
         type: SUCCESS,
         payload,
