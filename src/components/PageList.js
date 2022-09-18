@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 function PageList({ pagination, createClickHandler }) {
-  const { total } = pagination;
+  const { total, current } = pagination;
 
   const pageArray = Array.from({ length: total }, (_, idx) => idx + 1);
   const pages = pageArray.map(pageNumber => (
-    <Page key={pageNumber} onClick={createClickHandler(pageNumber)}>
+    <Page key={pageNumber} active={current === pageNumber} onClick={createClickHandler(pageNumber)}>
       {pageNumber}
     </Page>
   ));
