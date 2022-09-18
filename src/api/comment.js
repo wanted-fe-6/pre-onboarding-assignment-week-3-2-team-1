@@ -1,4 +1,4 @@
-import { withError } from '../util/errorHandler.util';
+import { withError } from '../util/withError.util';
 
 const baseUrl = 'http://localhost:4000/comments';
 const limit = 10;
@@ -32,11 +32,12 @@ export default class CommentApi {
   }
   static createAComment(form) {
     return withError(async () => {
-      await fetch(baseUrl, {
+      const res = await fetch(baseUrl, {
         method: 'POST',
         body: JSON.stringify(form),
         headers: headers,
       });
+      return await res.json();
     });
   }
   static updateAComment(id, form) {

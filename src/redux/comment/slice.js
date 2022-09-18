@@ -10,7 +10,7 @@ export const commentSlice = createSlice({
     getComments: state => reducerUtils.loading(state),
     getCommentsSuccess: (_, { payload }) => reducerUtils.success(payload),
     getCommentsError: (_, { payload }) => reducerUtils.error(payload),
-    updateComments: (state, { payload }) => {
+    editAcomment: (state, { payload }) => {
       const { data } = state;
       const newComments = data.map(comment => {
         if (comment.id !== payload.id) return comment;
@@ -18,7 +18,13 @@ export const commentSlice = createSlice({
       });
       return { ...state, data: newComments };
     },
-    deleteComments: (state, { payload }) => {
+    createAComment: (state, { payload }) => {
+      const { data } = state;
+      const newComments = [payload, ...data];
+      newComments.length = 10;
+      return { ...state, data: newComments };
+    },
+    deleteAComment: (state, { payload }) => {
       const { data } = state;
       const newComments = data.filter(comment => comment.id !== payload);
       return { ...state, data: newComments };
@@ -26,7 +32,13 @@ export const commentSlice = createSlice({
   },
 });
 
-export const { getComments, getCommentsError, getCommentsSuccess, updateComments, deleteComments } =
-  commentSlice.actions;
+export const {
+  getComments,
+  getCommentsError,
+  getCommentsSuccess,
+  createAComment,
+  editAcomment,
+  deleteAComment,
+} = commentSlice.actions;
 
 export default commentSlice.reducer;

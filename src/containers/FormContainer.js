@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import commentApi from '../api/comment';
-import { updateComments } from '../redux/comment/slice';
+import { editAcomment, createAComment } from '../redux/comment/slice';
 import { movePage } from '../redux/pagination/slice';
 import { setForm, resetForm } from '../redux/form/slice';
 
@@ -16,15 +16,16 @@ function FormContainer() {
     dispatch(setForm({ [e.target.name]: e.target.value }));
   };
 
-  const handleSumbit = e => {
+  const handleSumbit = async e => {
     e.preventDefault();
 
     if (!form.id) {
-      commentApi.createAComment(form);
+      const newForm = await commentApi.createAComment(form);
+      dispatch(createAComment(newForm));
       dispatch(movePage(1));
     } else {
       commentApi.updateAComment(form.id, form);
-      dispatch(updateComments(form));
+      dispatch(editAcomment(form));
     }
     dispatch(resetForm());
   };

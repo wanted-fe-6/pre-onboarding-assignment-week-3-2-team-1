@@ -5,7 +5,7 @@ import CommentList from '../components/CommentList';
 import Skeleton from '../components/Skeleton';
 
 import commentApi from '../api/comment';
-import { getComments, deleteComments } from '../redux/comment/slice';
+import { getComments, deleteAComment } from '../redux/comment/slice';
 import { movePage } from '../redux/pagination/slice';
 import { getForm } from '../redux/form/slice';
 
@@ -27,7 +27,7 @@ function CommentListContainer() {
     if (!agree) return;
 
     commentApi.deleteAComment(id);
-    dispatch(deleteComments(id));
+    dispatch(deleteAComment(id));
     dispatch(movePage(1));
   };
 
