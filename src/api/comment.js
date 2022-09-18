@@ -1,62 +1,58 @@
 import { withError } from '../util/errorHandler.util';
 
-class CommentApi {
-  constructor() {
-    this.baseUrl = 'http://localhost:4000/comments';
-    this.limit = 10;
-    this.order = 'desc';
-    this.sort = 'createdAt';
-    this.headers = { ['Content-Type']: 'application/json' };
-  }
-  getCommentsAll() {
+const baseUrl = 'http://localhost:4000/comments';
+const limit = 10;
+const order = 'desc';
+const sort = 'createdAt';
+const headers = { ['Content-Type']: 'application/json' };
+
+export default class CommentApi {
+  static getCommentsAll() {
     return withError(async () => {
-      const res = await fetch(this.baseUrl);
+      const res = await fetch(baseUrl);
       const comments = await res.json();
       return comments;
     });
   }
-  getCommentsByPage({ page }) {
+  static getCommentsByPage({ page }) {
     return withError(async () => {
       const res = await fetch(
-        `${this.baseUrl}?_page=${page}&_limit=${this.limit}&_sort=${this.sort}&_order=${this.order}`
+        `${baseUrl}?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`
       );
       const comments = await res.json();
       return comments;
     });
   }
-  getAComment(id) {
+  static getAComment(id) {
     return withError(async () => {
-      const res = await fetch(`${this.baseUrl}/${id}`);
+      const res = await fetch(`${baseUrl}/${id}`);
       const aComment = await res.json();
       return aComment;
     });
   }
-  createAComment(form) {
+  static createAComment(form) {
     return withError(async () => {
-      await fetch(this.baseUrl, {
+      await fetch(baseUrl, {
         method: 'POST',
         body: JSON.stringify(form),
-        headers: this.headers,
+        headers: headers,
       });
     });
   }
-  updateAComment(id, form) {
+  static updateAComment(id, form) {
     return withError(async () => {
-      await fetch(`${this.baseUrl}/${id}`, {
+      await fetch(`${baseUrl}/${id}`, {
         method: 'PUT',
         body: JSON.stringify(form),
-        headers: this.headers,
+        headers: headers,
       });
     });
   }
-  deleteAComment(id) {
+  static deleteAComment(id) {
     return withError(async () => {
-      await fetch(`${this.baseUrl}/${id}`, {
+      await fetch(`${baseUrl}/${id}`, {
         method: 'DELETE',
       });
     });
   }
 }
-
-const commentApi = new CommentApi();
-export default commentApi;

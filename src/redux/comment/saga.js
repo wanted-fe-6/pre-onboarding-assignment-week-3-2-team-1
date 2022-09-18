@@ -6,10 +6,8 @@ import commentApi from '../../api/comment';
 function* fetchComments({ payload }) {
   const { page } = payload;
 
-  const that = commentApi;
-
   try {
-    const comments = yield call([that, commentApi.getCommentsByPage], { page });
+    const comments = yield call(commentApi.getCommentsByPage, { page });
     yield put(getCommentsSuccess(comments));
   } catch (err) {
     yield put(getCommentsError(err));
