@@ -2,7 +2,8 @@
 
 ## ❓ 개요
 
-#### API 서버와 통신해서 [댓글 프로젝트](https://younuk.notion.site/a8d75feeb90040a1b64bef5944664969)를  Redux를 사용해구현합니다.
+### API 서버와 통신해서 [댓글 프로젝트](https://younuk.notion.site/a8d75feeb90040a1b64bef5944664969)를  Redux를 사용해구현합니다.  
+
 
 ---
 
@@ -116,8 +117,7 @@
   - [x] Redux logger, Redux-Devtools 설정 필수
   - [x] Redux를 이용한 비동기 처리 필수
 
----
-  <br/>
+---  
   
 #### ⚒️ 개발 스택  
 
@@ -127,11 +127,44 @@
 <img src="https://img.shields.io/badge/Redux saga-999999?style=for-the-badge&logo=reduxsaga&logoColor=white"/>
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"/>
 <img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"/>
-</div>
+</div>  
 
-#### 🌲 폴더 구조  
-  <br/>
-
+<br/>
+<details>
+<summary> 🌲 폴더 구조  </summary>
 <pre>
-폴더 구조 넣어주세요~
+📦src
+ ┣ 📂api
+ ┃ ┗ 📜comment.js
+ ┣ 📂components
+ ┃ ┣ 📜CommentList.js
+ ┃ ┣ 📜Form.js
+ ┃ ┣ 📜PageList.js
+ ┃ ┗ 📜Skeleton.js
+ ┣ 📂containers
+ ┃ ┣ 📜CommentListContainer.js
+ ┃ ┣ 📜FormContainer.js
+ ┃ ┗ 📜PageListContainer.js
+ ┣ 📂redux
+ ┃ ┣ 📂comment
+ ┃ ┃ ┣ 📜saga.js
+ ┃ ┃ ┗ 📜slice.js
+ ┃ ┣ 📂form
+ ┃ ┃ ┣ 📜saga.js
+ ┃ ┃ ┗ 📜slice.js
+ ┃ ┣ 📂pagination
+ ┃ ┃ ┣ 📜saga.js
+ ┃ ┃ ┗ 📜slice.js
+ ┃ ┗ 📜index.js
+ ┣ 📂store
+ ┃ ┗ 📜index.js
+ ┣ 📂util
+ ┃ ┣ 📜async.utill.js
+ ┃ ┗ 📜withError.util.js
+ ┣ 📜App.js
+ ┣ 📜index.js
+ ┣ 📜logo.svg
+ ┣ 📜reportWebVitals.js
+ ┗ 📜setupTests.js
 </pre>
+</details>
