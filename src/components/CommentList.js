@@ -11,7 +11,6 @@ function CommentList() {
       .get(`http://localhost:4000/comments?_page=3&_limit=4&_order=desc&_sort=id`)
       .then(res => {
         setComments(res.data);
-        // setPagination(res.data.length);
       })
       .catch(() => {
         alert('댓글을 불러오는 데 실패하였습니다.');
