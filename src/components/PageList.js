@@ -5,14 +5,13 @@ function PageList() {
   const pageArr = [];
 
   pageArr.push(
-    <Page Page key="1"> 1 </Page>
+    <Page Page key="1">
+      {' '}
+      1{' '}
+    </Page>
   );
 
-  return (
-    <PageListStyle>
-      {pageArr}
-    </PageListStyle>
-  )
+  return <PageListStyle>{pageArr}</PageListStyle>;
 }
 
 export default PageList;
