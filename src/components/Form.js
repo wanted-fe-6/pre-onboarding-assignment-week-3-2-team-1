@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { getComments, postComment, putComment } from '../modules/comments';
+import { getComments, getNextId, postComment, putComment } from '../modules/comments';
 
 function Form({ nextPostId, pageId, isEdit }) {
   const [img, setImg] = useState('');
@@ -37,6 +37,7 @@ function Form({ nextPostId, pageId, isEdit }) {
     } else {
       const body = { id: nextPostId, profile_url: img, author, content, createdAt: date };
       dispatch(postComment(body));
+      dispatch(getNextId());
       setTimeout(() => dispatch(getComments(1)), 50);
     }
 

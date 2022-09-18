@@ -7,6 +7,7 @@ class apiModel {
       const result = await axios.get(
         `${apiUrl}/comments?_page=${page}&_limit=4&_order=desc&_sort=id `
       );
+      console.info(result);
       const commentList = result.data;
       const commentLength = result.headers['x-total-count'];
       return { commentList, commentLength };
@@ -15,10 +16,13 @@ class apiModel {
     }
   };
 
-  static getCommentsLength = async () => {
+  static getNextId = async () => {
     try {
-      const { data } = await axios.get(`${apiUrl}/comments`);
-      return data.length;
+      const { data } = await axios.get(`${apiUrl}/comments?&_limit=1&_order=desc&_sort=id `);
+      const result = data[0].id + 1;
+      console.info('result', result);
+      console.info('data', data);
+      return result;
     } catch (e) {
       throw new Error({ message: '비동기 연결 실패', errorMessage: e });
     }

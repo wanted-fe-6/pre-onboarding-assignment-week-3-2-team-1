@@ -46,7 +46,7 @@
       "id": 7,
       "profile_url": "https://picsum.photos/id/7/50/50",
       "author": "abc_7",
-      "content": "주변에 React 개발자 있나요",
+      "content": "주변에 React 개발자 있나요?",
       "createdAt": "2022-03-07"
     },
     {
@@ -181,6 +181,27 @@
       "author": "f",
       "content": "fdsfds",
       "createdAt": "2022-09-18"
+    },
+    {
+      "id": 30,
+      "profile_url": "https://picsum.photos/id/21/50/50",
+      "author": "ㄹㄴㄹㄴㄹ",
+      "content": "ㄹㄴㄹㄴㄹ",
+      "createdAt": "2022-03-16"
+    },
+    {
+      "id": 32,
+      "profile_url": "https://picsum.photos/id/1/50/50",
+      "author": "fdsf",
+      "content": "fdsfds",
+      "createdAt": "2022-09-18"
+    },
+    {
+      "id": 33,
+      "profile_url": "https://picsum.photos/id/19/50/50",
+      "author": "fdsf",
+      "content": "fdsfds",
+      "createdAt": "2022-03-16"
     }
   ]
 }
