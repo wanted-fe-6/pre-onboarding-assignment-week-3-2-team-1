@@ -34,7 +34,7 @@
 
 ```bash
 # 설치
-> git clone https://github.com/wanted-fe-6/wanted-pre-onboarding-fe-6-3-1.git
+> git clone https://github.com/pre-onboarding-assignment-week-3-2-team-1.git
 > npm install
 
 # 실행
