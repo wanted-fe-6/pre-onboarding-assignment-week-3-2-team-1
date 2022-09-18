@@ -1,3 +1,17 @@
+export const createThunk = (type, promiseCreator) => {
+  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
+
+  return queryParam => async dispatch => {
+    dispatch({ type, queryParam });
+    try {
+      const payload = await promiseCreator(queryParam);
+      dispatch({ type: SUCCESS, payload });
+    } catch (e) {
+      dispatch({ type: ERROR, payload: e, error: true });
+    }
+  };
+};
+
 export const reducerUtils = {
   initial: (data = null) => ({
     loading: false,
@@ -5,18 +19,18 @@ export const reducerUtils = {
     error: null,
   }),
   loading: (preveState = null) => ({
-    data: preveState,
     loading: true,
+    data: preveState,
     error: null,
   }),
   success: data => ({
-    data,
     loading: false,
+    data,
     error: null,
   }),
   error: error => ({
-    data: null,
     loading: false,
+    data: null,
     error,
   }),
 };
