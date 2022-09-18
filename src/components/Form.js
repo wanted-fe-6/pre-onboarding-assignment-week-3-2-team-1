@@ -33,11 +33,11 @@ function Form({ nextPostId, pageId, isEdit }) {
     if (isEdit) {
       const body = { id: isEdit.id, profile_url: img, author, content, createdAt: date };
       dispatch(putComment(body));
-      dispatch(getComments(pageId));
+      setTimeout(() => dispatch(getComments(pageId)), 50);
     } else {
       const body = { id: nextPostId, profile_url: img, author, content, createdAt: date };
       dispatch(postComment(body));
-      dispatch(getComments(1));
+      setTimeout(() => dispatch(getComments(1)), 50);
     }
 
     setImg('');
