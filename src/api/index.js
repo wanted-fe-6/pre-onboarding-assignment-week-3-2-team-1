@@ -40,8 +40,9 @@ class apiModel {
     }
   };
 
-  static putComment = async (id, body) => {
+  static putComment = async body => {
     try {
+      const id = body.id;
       const { data } = await axios.put(`${apiUrl}/comments/${id}`, { ...body });
       return data;
     } catch (e) {

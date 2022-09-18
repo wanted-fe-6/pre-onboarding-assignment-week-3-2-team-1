@@ -21,7 +21,7 @@ function CommentList() {
 
   return data.contents.map((comment, key) => (
     <Comment key={key}>
-      <img src={comment.profile_url} alt="" />
+      <img src={comment.profile_url} alt="프로필 사진" />
 
       {comment.author}
 

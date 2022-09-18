@@ -6,10 +6,17 @@ export const createThunk = (type, apiFunc) => {
     try {
       const contents = await apiFunc(param);
       const payload = { contents, param };
-      dispatch({
-        type: SUCCESS,
-        payload,
-      });
+      if (SUCCESS === 'POST_COMMENT_SUCCESS' || SUCCESS === 'PUT_COMMENT_SUCCESS') {
+        dispatch({
+          type: SUCCESS,
+          payload: null,
+        });
+      } else {
+        dispatch({
+          type: SUCCESS,
+          payload,
+        });
+      }
     } catch (e) {
       dispatch({
         type: ERROR,

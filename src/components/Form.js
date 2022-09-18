@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { getComments, postComment } from '../modules/comments';
+import { getComments, postComment, putComment } from '../modules/comments';
 
-function Form({ nextPostId }) {
+function Form({ nextPostId, pageId, isEdit }) {
   const [img, setImg] = useState('');
   const [author, setAuthor] = useState('');
   const [content, setContent] = useState('');
@@ -29,10 +29,32 @@ function Form({ nextPostId }) {
 
   const onSubmit = e => {
     e.preventDefault();
-    const body = { id: nextPostId, profile_url: img, author, content, createdAt: date };
-    dispatch(postComment(body));
-    dispatch(getComments(1));
+
+    if (isEdit) {
+      const body = { id: isEdit.id, profile_url: img, author, content, createdAt: date };
+      dispatch(putComment(body));
+      dispatch(getComments(pageId));
+    } else {
+      const body = { id: nextPostId, profile_url: img, author, content, createdAt: date };
+      dispatch(postComment(body));
+      dispatch(getComments(1));
+    }
+
+    setImg('');
+    setAuthor('');
+    setContent('');
+    setDate('');
   };
+
+  useEffect(() => {
+    if (isEdit) {
+      const { profile_url, author, content, createdAt } = isEdit;
+      setImg(profile_url);
+      setAuthor(author);
+      setContent(content);
+      setDate(createdAt);
+    }
+  }, [isEdit]);
 
   return (
     <FormStyle>
