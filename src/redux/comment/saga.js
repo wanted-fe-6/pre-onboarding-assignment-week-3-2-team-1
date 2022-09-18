@@ -1,7 +1,7 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
 
 import { getComments, getCommentsSuccess, getCommentsError } from './slice';
-import commentApi from '../../services/comment';
+import commentApi from '../../api/comment';
 
 function* fetchComments({ payload }) {
   const { page } = payload;

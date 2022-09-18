@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 import { getTotalPages, getTotalPagesError, getTotalPagesSuccess } from './slice';
-import commentApi from '../../services/comment';
+import commentApi from '../../api/comment';
 
 function* fetchTotalPages() {
   const that = commentApi;

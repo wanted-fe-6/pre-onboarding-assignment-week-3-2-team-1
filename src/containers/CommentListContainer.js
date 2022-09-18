@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import CommentList from '../components/CommentList';
-import commentApi from '../services/comment';
+import commentApi from '../api/comment';
 
 import { getComments, deleteComments } from '../redux/comment/slice';
 import { movePage } from '../redux/pagination/slice';
-import { getAForm } from '../redux/form/slice';
+import { getForm } from '../redux/form/slice';
 
 function CommentListContainer() {
   const comments = useSelector(store => store.comment.data);
@@ -19,7 +19,7 @@ function CommentListContainer() {
   }, [pagination.current]);
 
   const createEditHandler = id => () => {
-    dispatch(getAForm(id));
+    dispatch(getForm(id));
   };
   const createDeleteHandler = id => () => {
     commentApi.deleteAComment(id);
