@@ -6,7 +6,7 @@ function FormContainer() {
   const store = useSelector(state => state.comments);
   console.info(store);
 
-  const nextPostId = store.commentList.data?.contents[0].id + 1;
+  const nextPostId = store.commentList.data?.contents.commentList[0].id + 1;
   const pageId = store.commentList.data?.param;
   const isEdit = store.comment.data?.contents;
   console.info('nextPostId', nextPostId);

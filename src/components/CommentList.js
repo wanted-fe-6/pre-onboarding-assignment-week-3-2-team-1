@@ -28,7 +28,7 @@ function CommentList() {
   if (error) return <div>에러가 발생했습니다.</div>;
   if (!data) return null;
 
-  return data.contents.map((comment, key) => (
+  return data.contents.commentList.map((comment, key) => (
     <Comment key={key}>
       <img src={comment.profile_url} alt="프로필 사진" />
 

@@ -12,7 +12,7 @@ function PageList({ data, pageId, dispatch }) {
   };
 
   const pagination = () => {
-    const pageNumbers = Math.ceil(data.contents / 4);
+    const pageNumbers = Math.ceil(data.contents.commentLength / 4);
     const pageArray = [];
     for (let i = 1; i <= pageNumbers; i++) {
       if (i === pageId) {

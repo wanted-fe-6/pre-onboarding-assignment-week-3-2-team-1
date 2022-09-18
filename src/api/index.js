@@ -4,10 +4,13 @@ const apiUrl = 'http://localhost:4000';
 class apiModel {
   static getComments = async page => {
     try {
-      const { data } = await axios.get(
+      const result = await axios.get(
         `${apiUrl}/comments?_page=${page}&_limit=4&_order=desc&_sort=id `
       );
-      return data;
+      console.info(result);
+      const commentList = result.data;
+      const commentLength = result.headers['x-total-count'];
+      return { commentList, commentLength };
     } catch (e) {
       throw new Error({ message: '비동기 연결 실패', errorMessage: e });
     }
