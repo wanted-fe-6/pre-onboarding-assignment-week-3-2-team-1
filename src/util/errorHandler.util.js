@@ -1,8 +1,7 @@
-export const errorHandler = (fn, errorMessage) => {
+export const withError = (fn, ctx) => {
   try {
-    fn();
+    return fn.apply(ctx);
   } catch (err) {
     console.error(err);
-    throw new Error(errorMessage);
   }
 };

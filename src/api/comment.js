@@ -1,72 +1,56 @@
+import { withError } from '../util/errorHandler.util';
+
 class CommentApi {
   constructor() {
     this.baseUrl = 'http://localhost:4000/comments';
     this.limit = 10;
     this.headers = { ['Content-Type']: 'application/json' };
   }
-  async getCommentsAll() {
-    try {
+  getCommentsAll() {
+    return withError(async () => {
       const res = await fetch(this.baseUrl);
       const comments = await res.json();
       return comments;
-    } catch (err) {
-      console.error(err);
-      throw new Error('Failed to get all comments from server');
-    }
+    });
   }
-  async getCommentsByPage({ page }) {
-    try {
+  getCommentsByPage({ page }) {
+    return withError(async () => {
       const res = await fetch(`${this.baseUrl}?_page=${page}&_limit=${this.limit}`);
       const comments = await res.json();
       return comments;
-    } catch (err) {
-      console.error(err);
-      throw new Error('Failed to get comments by page from server');
-    }
+    });
   }
-  async getAComment(id) {
-    try {
+  getAComment(id) {
+    return withError(async () => {
       const res = await fetch(`${this.baseUrl}/${id}`);
       const aComment = await res.json();
       return aComment;
-    } catch (err) {
-      console.error(err);
-      throw new Error('Failed to get a comment from server');
-    }
+    });
   }
-  async createAComment(form) {
-    try {
+  createAComment(form) {
+    return withError(async () => {
       await fetch(this.baseUrl, {
         method: 'POST',
         body: JSON.stringify(form),
         headers: this.headers,
       });
-    } catch (err) {
-      console.error(err);
-      throw new Error('Failed to create a comment');
-    }
+    });
   }
-  async updateAComment(id, form) {
-    try {
+  updateAComment(id, form) {
+    return withError(async () => {
       await fetch(`${this.baseUrl}/${id}`, {
         method: 'PUT',
         body: JSON.stringify(form),
         headers: this.headers,
       });
-    } catch (err) {
-      console.error(err);
-      throw new Error('Failed to update a comment');
-    }
+    });
   }
-  async deleteAComment(id) {
-    try {
+  deleteAComment(id) {
+    return withError(async () => {
       await fetch(`${this.baseUrl}/${id}`, {
         method: 'DELETE',
       });
-    } catch (err) {
-      console.error(err);
-      throw new Error('Failed to delete a comment');
-    }
+    });
   }
 }
 
