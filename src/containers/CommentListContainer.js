@@ -23,6 +23,9 @@ function CommentListContainer() {
     dispatch(getForm(id));
   };
   const createDeleteHandler = id => () => {
+    const agree = confirm('정말 삭제하시겠습니까?');
+    if (!agree) return;
+
     commentApi.deleteAComment(id);
     dispatch(deleteComments(id));
     dispatch(movePage(1));
