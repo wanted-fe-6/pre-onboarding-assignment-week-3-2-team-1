@@ -1,17 +1,20 @@
-import apiModel from './api';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getComments } from './modules/comments';
 
 const Temp = () => {
-  const [data, setData] = useState([]);
+  const { data, loading, error } = useSelector(state => state.comments.commentList);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const getComments = async () => {
-      const res = await apiModel.getComments('/comments');
-      console.info('res', res);
-      setData(res);
-    };
-    getComments();
-  }, []);
+    dispatch(getComments(1));
+  }, [dispatch]);
+
+  console.info(data);
+
+  if (loading) return <div>로딩중...</div>;
+  if (error) return <div>에러가 발생했습니다.</div>;
+  if (!data) return null;
 
   return (
     <ul>

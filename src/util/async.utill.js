@@ -1,7 +1,55 @@
+export const createThunk = (type, apiFunc) => {
+  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
+
+  const thunk = param => async dispatch => {
+    dispatch({ type, param });
+    try {
+      const payload = await apiFunc(param);
+      dispatch({
+        type: SUCCESS,
+        payload,
+      });
+    } catch (e) {
+      dispatch({
+        type: ERROR,
+        payload: e,
+        error: true,
+      });
+    }
+  };
+
+  return thunk;
+};
+
+export const handleReducer = (type, key) => {
+  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
+  return (state, action) => {
+    switch (action.type) {
+      case type:
+        return {
+          ...state,
+          [key]: reducerUtils.loading(),
+        };
+      case SUCCESS:
+        return {
+          ...state,
+          [key]: reducerUtils.success(action.payload),
+        };
+      case ERROR:
+        return {
+          ...state,
+          [key]: reducerUtils.error(action.payload),
+        };
+      default:
+        return state;
+    }
+  };
+};
+
 export const reducerUtils = {
   initial: (data = null) => ({
-    loading: false,
     data,
+    loading: false,
     error: null,
   }),
   loading: (preveState = null) => ({
