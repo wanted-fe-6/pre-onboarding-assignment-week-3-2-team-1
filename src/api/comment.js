@@ -4,6 +4,8 @@ class CommentApi {
   constructor() {
     this.baseUrl = 'http://localhost:4000/comments';
     this.limit = 10;
+    this.order = 'desc';
+    this.sort = 'createdAt';
     this.headers = { ['Content-Type']: 'application/json' };
   }
   getCommentsAll() {
@@ -15,7 +17,9 @@ class CommentApi {
   }
   getCommentsByPage({ page }) {
     return withError(async () => {
-      const res = await fetch(`${this.baseUrl}?_page=${page}&_limit=${this.limit}`);
+      const res = await fetch(
+        `${this.baseUrl}?_page=${page}&_limit=${this.limit}&_sort=${this.sort}&_order=${this.order}`
+      );
       const comments = await res.json();
       return comments;
     });
