@@ -7,9 +7,10 @@ import commentApi from '../api/comment';
 import { getComments, deleteComments } from '../redux/comment/slice';
 import { movePage } from '../redux/pagination/slice';
 import { getForm } from '../redux/form/slice';
+import Skeleton from '../components/Skeleton';
 
 function CommentListContainer() {
-  const comments = useSelector(store => store.comment.data);
+  const { data: comments, loading } = useSelector(store => store.comment);
   const pagination = useSelector(store => store.pagination.data);
 
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ function CommentListContainer() {
     dispatch(movePage(1));
   };
 
+  if (loading) return <Skeleton />;
   return (
     <CommentList
       comments={comments}
