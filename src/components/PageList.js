@@ -4,10 +4,8 @@ import { getComments } from '../modules/comments';
 
 function PageList({ data, pageId, dispatch }) {
   const [pageArray, setPageArray] = useState([]);
-  // console.info(pageId);
 
   const handlePage = i => {
-    // console.info(i);
     dispatch(getComments(i));
   };
 
@@ -29,7 +27,6 @@ function PageList({ data, pageId, dispatch }) {
         );
       }
     }
-    // console.info('pageArray', pageArray);
     return pageArray;
   };
 

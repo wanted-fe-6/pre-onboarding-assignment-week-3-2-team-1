@@ -7,7 +7,6 @@ class apiModel {
       const result = await axios.get(
         `${apiUrl}/comments?_page=${page}&_limit=4&_order=desc&_sort=id `
       );
-      console.info(result);
       const commentList = result.data;
       const commentLength = result.headers['x-total-count'];
       return { commentList, commentLength };

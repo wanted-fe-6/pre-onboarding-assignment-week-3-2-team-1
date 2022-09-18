@@ -7,7 +7,6 @@ function PageListContainer() {
   const { data, loading, error } = commentList;
   const pageId = commentList.data?.param;
   const dispatch = useDispatch();
-  // console.info(pageId);
 
   if (loading) return <div>로딩중...</div>;
   if (error) return <div>에러발생</div>;
