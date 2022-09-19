@@ -1,6 +1,6 @@
 ## <img src='https://user-images.githubusercontent.com/85447054/190890328-ba527a9c-6216-46e9-8e7e-45437174f0f6.png' width='240'/>
 
-### json-server 서버와 통신해서 [댓글 프로젝트](https://younuk.notion.site/a8d75feeb90040a1b64bef5944664969)를  Redux를 사용해구현합니다.  
+### json-server 통신해서 [댓글 프로젝트](https://younuk.notion.site/a8d75feeb90040a1b64bef5944664969)를  Redux를 사용해구현합니다.
 
 ## 목차
 
@@ -27,6 +27,8 @@
 ---
 
 ## 1. 실행 영상
+
+### 배포하는데 실패해 영상으로 대체합니다.
 
 #### CREATE
 ![3-2-create](https://user-images.githubusercontent.com/59273135/190939750-ec9a5ab6-9998-42f2-be88-6988c6a921b5.gif)
