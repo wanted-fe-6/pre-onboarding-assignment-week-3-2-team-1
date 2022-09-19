@@ -37,7 +37,7 @@
 #### DELETE
 ![3-2-delete](https://user-images.githubusercontent.com/59273135/190939758-2502d466-c436-401c-bb08-4d3e5a51363e.gif)
 
-#### 2. 설치, 환경설정, 실행방법
+## 2. 설치, 환경설정, 실행방법
 
 ```bash
 # 설치
